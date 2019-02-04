@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 public class CRMmanagerPipelineTest extends TestBase {
 
     @Test
-    public void BRIT_1408(){
+    public void BRIT_1408() throws InterruptedException {
 
     extentLogger = report.createTest("CRM Manager should be able to " +
             "navigate pipeline functionality(BRIT-1408)");
@@ -32,7 +32,11 @@ public class CRMmanagerPipelineTest extends TestBase {
     softAssert.assertEquals(pages.getPipelinePage().getpipelineTitle(), ApplicationConstants.PIPELINE_TITLE);
 
     extentLogger.info("Verifying the Pipeline func. is clickable");
-    //softAssert.assertEquals(pages.getPipelinePage().getpipelineTitle(),ApplicationConstants.PIPELINE_TITLE);
+    pages.getPipelinePage().pipelineLink.click();
+
+    extentLogger.info("Verifying the Create button on the Pipeline page is clickable");
+    Thread.sleep(5000);
+    pages.getPipelinePage().createButtonOnPipelinePage.click();
 
     }
 
