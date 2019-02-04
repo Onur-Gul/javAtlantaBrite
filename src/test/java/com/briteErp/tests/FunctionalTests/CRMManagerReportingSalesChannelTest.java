@@ -9,7 +9,7 @@ public class CRMManagerReportingSalesChannelTest extends TestBase {
 
     @Test
     public void BRITE_0203() throws InterruptedException {
-
+// test comment
     extentLogger = report.createTest("CRM Manager should be able to " +
             "see reports (BRIT-0203)");
 
