@@ -8,6 +8,8 @@ public class PageFactory {
     private PipelinePage pipelinePage;
     private UserCrmPipelinePage userCrmPipelinePage;
 
+    private CRMUserCustomersPage crmUserCustomersPage;
+
     private UserCrmPipelineChangeOpportunityInfoPage changeOppurtunityInfoPage;
     private ReportPage reportPage;
 
@@ -45,4 +47,12 @@ public class PageFactory {
         }
         return reportPage;
 
-    }}
+    }
+    public CRMUserCustomersPage getCrmUserCustomersPage() {
+        if (crmUserCustomersPage == null) {
+            crmUserCustomersPage = new CRMUserCustomersPage();
+        }
+        return crmUserCustomersPage;
+    }
+
+}
