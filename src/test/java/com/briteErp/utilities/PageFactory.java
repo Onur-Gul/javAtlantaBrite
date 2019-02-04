@@ -6,9 +6,9 @@ public class PageFactory {
 
     private LoginPage loginPage;
     private PipelinePage pipelinePage;
-    private UserCrmPipelinePage userCrmPipelinePage;
+    private CRMUserPipelinePage CRMUserPipelinePage;
 
-    private UserCrmPipelineChangeOpportunityInfoPage changeOppurtunityInfoPage;
+    private CRMUserPipelineChangeOpportunityInfoPage changeOppurtunityInfoPage;
     private ReportPage reportPage;
 
     public LoginPage login() {
@@ -25,16 +25,16 @@ public class PageFactory {
         return pipelinePage;
     }
 
-    public UserCrmPipelinePage userCrmPipelinePage() {
-        if (userCrmPipelinePage == null) {
-            userCrmPipelinePage = new UserCrmPipelinePage();
+    public CRMUserPipelinePage CRMUserPipelinePage() {
+        if (CRMUserPipelinePage == null) {
+            CRMUserPipelinePage = new CRMUserPipelinePage();
         }
-        return userCrmPipelinePage;
+        return CRMUserPipelinePage;
     }
 
-    public UserCrmPipelineChangeOpportunityInfoPage changeOppurtunityInfoPage() {
+    public CRMUserPipelineChangeOpportunityInfoPage changeOppurtunityInfoPage() {
         if (changeOppurtunityInfoPage == null) {
-            changeOppurtunityInfoPage= new UserCrmPipelineChangeOpportunityInfoPage();
+            changeOppurtunityInfoPage= new CRMUserPipelineChangeOpportunityInfoPage();
         }
         return changeOppurtunityInfoPage;
     }

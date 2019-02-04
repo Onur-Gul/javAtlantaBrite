@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class UserCrmPipelinePage {
+public class CRMUserPipelinePage {
 
-    public UserCrmPipelinePage() {
+    public CRMUserPipelinePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 

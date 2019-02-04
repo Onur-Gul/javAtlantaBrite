@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.Random;
 
-public class UserCRMPipelineCreateAndImportTests extends TestBase {
+public class CRMUserPipelineCreateAndImportTests extends TestBase {
 
     @Test
     public void pipelineClickTest() {
@@ -24,22 +24,23 @@ public class UserCRMPipelineCreateAndImportTests extends TestBase {
         pages.login().loginButton.click();
         extentLogger.info(" 1.1.3 Click on CRM tab on top.");
         pages.login().CRMButton.click();
-        pages.userCrmPipelinePage().pipelineLink.click();
+        pages.CRMUserPipelinePage().pipelineLink.click();
 
     }
 
     @Test
+
     public void createOpportunityTest(){
         extentLogger = report.createTest("Create an Oppurtunity as User");
 
 //      using a method created in Testbase to login
-        positiveLoginTest();
+        loginAsUser();
 
         extentLogger.info("1.2.1 Click on Create button.");
-        pages.userCrmPipelinePage().createButton.click();
+        pages.CRMUserPipelinePage().createButton.click();
 
         extentLogger.info("1.2.2 Enter new opportunity's general information to the respective lines.");
-        pages.userCrmPipelinePage().opportunityTitle.sendKeys("2019 Huge Sale");
+        pages.CRMUserPipelinePage().opportunityTitle.sendKeys("2019 Huge Sale");
 
         // COULDN'T CREATE THE CUSTOMER may be there is a bug and test should FAIL
 //        Faker faker = new Faker();
@@ -50,9 +51,9 @@ public class UserCRMPipelineCreateAndImportTests extends TestBase {
 //        driver.findElement(By.xpath("(//div[@class='modal-dialog']//div[@class='modal-footer']//span[1]")).click();
 
         extentLogger.info("Enter Random number for expected revenue");
-        pages.userCrmPipelinePage().expectedRevenue.clear();
-        pages.userCrmPipelinePage().expectedRevenue.sendKeys(randomQuantity());
-        pages.userCrmPipelinePage().priority.click();
+        pages.CRMUserPipelinePage().expectedRevenue.clear();
+        pages.CRMUserPipelinePage().expectedRevenue.sendKeys(randomQuantity());
+        pages.CRMUserPipelinePage().priority.click();
 
         extentLogger.info("1.2.3 Save the changes by clicking create button.");
         driver.findElement(By.xpath("//footer//button[1]")).click();
@@ -64,7 +65,7 @@ public class UserCRMPipelineCreateAndImportTests extends TestBase {
         extentLogger = report.createTest("Create an Oppurtunity Information as User");
 
 //      using a method created in Testbase to login
-        positiveLoginTest();
+        loginAsUser();
         Thread.sleep(3000);
 
 //      THROWS NULLPOINTER EXCEPTION for changing opportunity test for failure test
@@ -89,19 +90,20 @@ public class UserCRMPipelineCreateAndImportTests extends TestBase {
     }
 
     @Test
-    public void clearingSearchBox(){
+    public void clearingSearchBox() throws InterruptedException{
 
-        positiveLoginTest();
+        loginAsUser();
 //        1.4.1 Click on pipeline tab under main pipeline button.
-        pages.userCrmPipelinePage().pipelineLink.click();
+        pages.CRMUserPipelinePage().pipelineLink.click();
+        Thread.sleep(3000);
 //        1.4.2 Clear the search box by clicking the x.
-        pages.userCrmPipelinePage().xIconOnSearchBox.click();
+        pages.CRMUserPipelinePage().xIconOnSearchBox.click();
     }
 
     @Test
     public void searchOpportunity(){
 
-        positiveLoginTest();
+        loginAsUser();
 //        1.5.1 Click on search button.
 //        1.5.2 Enter the name of newly created oppurtunity.
 //        1.5.3 Verify the name of the oppurtunity is matching with the name of oppurtunity created.
@@ -110,7 +112,7 @@ public class UserCRMPipelineCreateAndImportTests extends TestBase {
     @Test
     public void importAFile(){
 
-        positiveLoginTest();
+        loginAsUser();
 //        1.6.1 Click on ""Import"" button
 //        1.6.2 Verify the the title includes ""Import a File""
 //        1.6.3 Click on ""Load File"" button.
@@ -121,7 +123,7 @@ public class UserCRMPipelineCreateAndImportTests extends TestBase {
     @Test
     public void verifyCreateAndImport(){
 
-        positiveLoginTest();
+        loginAsUser();
 //        1.7.1 Click on CRM module.
 //        1.7.2 Click on Pipeline
 //        1.7.3 Verify the ""Create"" and ""import"" buttons are excisting.
@@ -131,7 +133,7 @@ public class UserCRMPipelineCreateAndImportTests extends TestBase {
     @Test
     public void itemUnderQualified(){
 
-        positiveLoginTest();
+        loginAsUser();
 //        2.1.1 Click on any title under Qualified.
 //        2.1.2 Verify that the title selected is under the correct category.
     }
@@ -139,7 +141,7 @@ public class UserCRMPipelineCreateAndImportTests extends TestBase {
     @Test
     public void changeStatusAsWon(){
 
-        positiveLoginTest();
+        loginAsUser();
 //        2.2.1 Click on ""Mark Won""
 //        2.2.2 Verify that the status has changed to ""won"".
     }
@@ -147,7 +149,7 @@ public class UserCRMPipelineCreateAndImportTests extends TestBase {
     @Test
     public void changeStatusAsLost(){
 
-        positiveLoginTest();
+        loginAsUser();
 //        2.3.1 Click on ""Mark Lost""
 //        2.3.2 ßelect any reason to change the status.
 //        2.3.3 Click on submit.

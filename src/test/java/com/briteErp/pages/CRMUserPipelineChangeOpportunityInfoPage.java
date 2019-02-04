@@ -3,7 +3,7 @@ package com.briteErp.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class UserCrmPipelineChangeOpportunityInfoPage {
+public class CRMUserPipelineChangeOpportunityInfoPage {
 
     @FindBy(xpath = "//div[@class='o_kanban_group ui-sortable o_kanban_has_progressbar']//div[@class='oe_kanban_color_0 oe_kanban_global_click o_kanban_record ui-sortable-handle'][2]")
 //    (//div[@class='oe_kanban_content']//strong[@class='o_kanban_record_title'])[2]

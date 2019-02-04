@@ -85,7 +85,7 @@ public class TestBase {
     }
 
     // Method for login to CRM module as user
-    public void positiveLoginTest() {
+    public void loginAsUser() {
 
         //        1.1.1 Open the URL
         pages.login().BriteErpDemo.click();
