@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="tests" verbose="2">
+
+    <test name=" Smoke Tests">
+        <classes>
+            <class name="com.briteErp.tests.SmokeTests.PositiveCRMManagerLoginTest"/>
+            <class name="com.briteErp.tests.SmokeTests.PositiveCRMUserLoginTest"/>
+            <class name="com.briteErp.tests.SmokeTests.NegativeCRMManagerLoginTest"/>
+            <class name="com.briteErp.tests.SmokeTests.NegativeCRMUserLoginTest"/>
+
+        </classes>
+    </test>
+
+</suite>
