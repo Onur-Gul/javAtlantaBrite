@@ -67,7 +67,7 @@ public class UserCRMPipelineCreateAndImportTests extends TestBase {
         positiveLoginTest();
         Thread.sleep(3000);
 
-//      THROWS NULLPOINTER EXCEPTION for changing opportunity test
+//      THROWS NULLPOINTER EXCEPTION for changing opportunity test for failure test
         extentLogger.info("1.3.1 Click on the new oppurtunity created.");
         pages.changeOppurtunityInfoPage().newCreatedOppurtunity.click();
         Thread.sleep(2000);
