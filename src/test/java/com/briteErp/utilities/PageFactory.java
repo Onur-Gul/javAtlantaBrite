@@ -12,6 +12,7 @@ public class PageFactory {
 
     private UserCrmPipelineChangeOpportunityInfoPage changeOppurtunityInfoPage;
     private ReportPage reportPage;
+    private CustomersPage customersPage;
 
     public LoginPage login() {
         if (loginPage == null) {
@@ -53,6 +54,13 @@ public class PageFactory {
             crmUserCustomersPage = new CRMUserCustomersPage();
         }
         return crmUserCustomersPage;
+    }
+
+    public CustomersPage getCustomersPage() {
+        if (customersPage == null) {
+            customersPage = new CustomersPage();
+        }
+        return customersPage;
     }
 
 }
