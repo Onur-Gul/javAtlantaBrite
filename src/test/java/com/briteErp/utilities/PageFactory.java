@@ -9,7 +9,7 @@ public class PageFactory {
     private CRMUserPipelinePage CRMUserPipelinePage;
     private CRMUserPipelineQualifiedPage qualifiedPage;
     private CRMUserPipelineChangeOpportunityInfoPage changeOpportunityInfoPage;
-    private UserCrmPipelinePage userCrmPipelinePage;
+//    private UserCrmPipelinePage userCrmPipelinePage;
     private CRMUserCustomersPage crmUserCustomersPage;
     private ReportPage reportPage;
 
