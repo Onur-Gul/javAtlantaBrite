@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class CRMUserPipelineChangeOpportunityInfoPage {
 
-    @FindBy(xpath = "(//div[@class='o_kanban_group ui-sortable o_kanban_has_progressbar'][1]//div[@class='oe_kanban_content'])[2]")
+    @FindBy(xpath = "(//div[@class='o_kanban_group ui-sortable o_kanban_has_progressbar'][1]//div[@class='oe_kanban_content'])[4]")
     public WebElement newCreatedOpportunity;
 
     @FindBy(xpath = "//button[@class='btn btn-primary btn-sm o_form_button_edit']")
