@@ -7,8 +7,8 @@ public class PageFactory {
     private LoginPage loginPage;
     private PipelinePage pipelinePage;
     private CRMUserPipelinePage CRMUserPipelinePage;
-
-    private CRMUserPipelineChangeOpportunityInfoPage changeOppurtunityInfoPage;
+    private CRMUserPipelineQualifiedPage qualifiedPage;
+    private CRMUserPipelineChangeOpportunityInfoPage changeOpportunityInfoPage;
     private ReportPage reportPage;
 
     public LoginPage login() {
@@ -32,11 +32,18 @@ public class PageFactory {
         return CRMUserPipelinePage;
     }
 
-    public CRMUserPipelineChangeOpportunityInfoPage changeOppurtunityInfoPage() {
-        if (changeOppurtunityInfoPage == null) {
-            changeOppurtunityInfoPage= new CRMUserPipelineChangeOpportunityInfoPage();
+    public CRMUserPipelineChangeOpportunityInfoPage changeOpportunityInfoPage() {
+        if (changeOpportunityInfoPage == null) {
+            changeOpportunityInfoPage= new CRMUserPipelineChangeOpportunityInfoPage();
         }
-        return changeOppurtunityInfoPage;
+        return changeOpportunityInfoPage;
+    }
+
+    public CRMUserPipelineQualifiedPage qualifiedPage(){
+        if (qualifiedPage == null) {
+            qualifiedPage = new CRMUserPipelineQualifiedPage();
+        }
+        return qualifiedPage;
     }
 
     public ReportPage reportPage() {

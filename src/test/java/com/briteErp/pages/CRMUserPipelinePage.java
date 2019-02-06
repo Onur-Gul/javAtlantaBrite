@@ -18,6 +18,15 @@ public class CRMUserPipelinePage {
     @FindBy(xpath = "//button[@class='btn btn-primary btn-sm o-kanban-button-new']")
     public WebElement createButton;
 
+    @FindBy(xpath = "//button[@class='btn btn-sm btn-default o_button_import']")
+    public WebElement importButton;
+
+    @FindBy(xpath = "//ol[@class='breadcrumb']//li[2]")
+    public WebElement importAFileTitle;
+
+    @FindBy(xpath = "//span[@class='input-group-btn'][1]")
+    public WebElement loadFile;
+
     @FindBy(xpath = "//td//input[@class='o_field_char o_field_widget o_input o_required_modifier']")
     public WebElement opportunityTitle;
 
@@ -30,10 +39,14 @@ public class CRMUserPipelinePage {
     @FindBy(xpath = "//tbody//tr[4]//td[2]//div//a[2]")
     public WebElement priority;
 
-    @FindBy(xpath = "//div[@class='fa fa-sm fa-remove o_facet_remove']")
+    @FindBy(xpath = "//div[@class='o_searchview_facet']//div[@class='fa fa-sm fa-remove o_facet_remove']")
     public WebElement xIconOnSearchBox;
 
+    @FindBy(xpath = "//input[@class='o_searchview_input']")
+    public WebElement searchBox;
 
+    @FindBy(xpath = "(//div//ul[@class='dropdown-menu o_searchview_autocomplete']//li[1])")
+    public WebElement searchBoxFirstItem;
 
 
 
