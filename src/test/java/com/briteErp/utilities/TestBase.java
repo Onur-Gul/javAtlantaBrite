@@ -33,6 +33,7 @@ public class TestBase {
         driver = Driver.getDriver();
         pages = new PageFactory();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.get(ConfigurationReader.getProperty("url"));
         actions = new Actions(driver);
         softAssert = new SoftAssert();
@@ -106,6 +107,31 @@ public class TestBase {
 
         return rndmQuantity;
     }
+
+
+
+    //Method for login to CRM module as a Manager
+
+    public void getCRMModule(){
+
+    extentLogger.info("Verifying to open main page");
+    pages.login().open();
+
+    extentLogger.info("Verifying to select BriteErpDemo");
+    pages.login().selectBriteErpDemo();
+
+    extentLogger.info("Verifying to login Manager account");
+    pages.login().login(ConfigurationReader.getProperty("CRMManagerEmail"),ConfigurationReader.getProperty("CRMManagerPassword"));
+
+    extentLogger.info("Verifing to open CRM module page is ready for usage");
+    pages.login().clickCRModule();
+    }
+
+
+
+
+
+
 
     @AfterTest
     public void tearDownTest() {
