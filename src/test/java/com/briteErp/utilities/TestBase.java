@@ -4,6 +4,7 @@ package com.briteErp.utilities;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.ITestResult;
@@ -22,6 +23,7 @@ public class TestBase {
     protected PageFactory pages;
     protected Actions actions;
     public SoftAssert softAssert;
+    public Faker faker;
 
     protected static ExtentReports report;
     private static ExtentHtmlReporter htmlReporter;
@@ -52,7 +54,7 @@ public class TestBase {
         } else if (result.getStatus() == ITestResult.SKIP) {
             extentLogger.skip("Test Case Skipped: " + result.getName());
         }
-       Driver.closeDriver();
+//       Driver.closeDriver();
     }
 
     @BeforeTest
@@ -86,7 +88,7 @@ public class TestBase {
     }
 
     // Method for login to CRM module as user
-    public void positiveLoginTest() {
+    public void loginAsUser() {
 
         //        1.1.1 Open the URL
         pages.login().BriteErpDemo.click();
@@ -99,6 +101,7 @@ public class TestBase {
         pages.login().CRMButton.click();
 
     }
+
     // Method for sending random numbers to required areas
     public String randomQuantity() {
         Random r = new Random();
