@@ -9,7 +9,10 @@ public class PageFactory {
     private CRMUserPipelinePage CRMUserPipelinePage;
     private CRMUserPipelineQualifiedPage qualifiedPage;
     private CRMUserPipelineChangeOpportunityInfoPage changeOpportunityInfoPage;
+    private UserCrmPipelinePage userCrmPipelinePage;
+    private CRMUserCustomersPage crmUserCustomersPage;
     private ReportPage reportPage;
+    private CustomersPage customersPage;
 
     public LoginPage login() {
         if (loginPage == null) {
@@ -52,4 +55,19 @@ public class PageFactory {
         }
         return reportPage;
 
-    }}
+    }
+    public CRMUserCustomersPage getCrmUserCustomersPage() {
+        if (crmUserCustomersPage == null) {
+            crmUserCustomersPage = new CRMUserCustomersPage();
+        }
+        return crmUserCustomersPage;
+    }
+
+    public CustomersPage getCustomersPage() {
+        if (customersPage == null) {
+            customersPage = new CustomersPage();
+        }
+        return customersPage;
+    }
+
+}

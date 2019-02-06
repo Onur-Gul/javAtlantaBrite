@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="tests" verbose="2">
 
-    <test name=" Smoke Tests">
+    <test name=" Report">
         <classes>
-
+        <class name="com.briteErp.tests.FunctionalTests.CRMManagerReportTest"/>
 
         </classes>
     </test>
