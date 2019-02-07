@@ -21,7 +21,6 @@ public class ReportPage {
 
 
 
-
     @FindBy(xpath = "//div//button[@class='btn btn-primary btn-sm dropdown-toggle']")
     public WebElement RPMeasures ;
 
@@ -29,6 +28,26 @@ public class ReportPage {
     public WebElement RPMeasuresCount;
 
 
+    @FindBy(xpath = "(//div[@class='btn-group btn-group-sm open']//li)[7]")
+    public WebElement RPMeasuresTotalRevenue;
+
+    @FindBy(xpath = "(//div[@class='btn-group btn-group-sm open']//li)[6]")
+    public WebElement RPMeasuresProbability;
+
+    @FindBy(xpath = "(//div[@class='btn-group btn-group-sm open']//li)[5]")
+    public WebElement RPMeasuresNumberofActivities;
+
+    @FindBy(xpath = "(//div[@class='btn-group btn-group-sm open']//li)[4]")
+    public WebElement RPMeasuresOverPassedDeadLine;
+
+    @FindBy(xpath = "(//div[@class='btn-group btn-group-sm open']//li)[3]")
+    public WebElement RPMeasuresDelayToClose;
+
+    @FindBy(xpath = "(//div[@class='btn-group btn-group-sm open']//li)[2]")
+    public WebElement RPMeasuresDelayToAssign;
+
+    @FindBy(xpath = "(//div[@class='btn-group btn-group-sm open']//li)[1]")
+    public WebElement RPMeasuresProbableTurnover;
 
 
 

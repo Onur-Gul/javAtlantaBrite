@@ -7,9 +7,10 @@ public class PageFactory {
     private LoginPage loginPage;
     private ManagerPipelinePage pipelinePage;
     private ManagerQuotationsPage quotationsPage;
-    private UserCrmPipelinePage userCrmPipelinePage;
     private CRMUserCustomersPage crmUserCustomersPage;
-    private UserCrmPipelineChangeOpportunityInfoPage changeOppurtunityInfoPage;
+    private CRMUserPipelinePage CRMUserPipelinePage;
+    private CRMUserPipelineQualifiedPage qualifiedPage;
+    private CRMUserPipelineChangeOpportunityInfoPage changeOpportunityInfoPage;
     private ReportPage reportPage;
     private CustomersPage customersPage;
 
@@ -29,6 +30,7 @@ public class PageFactory {
         return pipelinePage;
     }
 
+
     public ManagerQuotationsPage getQuotationsPage() {
         if (quotationsPage == null) {
             quotationsPage = new ManagerQuotationsPage();
@@ -37,18 +39,25 @@ public class PageFactory {
     }
 
 
-    public UserCrmPipelinePage userCrmPipelinePage() {
-        if (userCrmPipelinePage == null) {
-            userCrmPipelinePage = new UserCrmPipelinePage();
+    public CRMUserPipelinePage CRMUserPipelinePage() {
+        if (CRMUserPipelinePage == null) {
+            CRMUserPipelinePage = new CRMUserPipelinePage();
         }
-        return userCrmPipelinePage;
+        return CRMUserPipelinePage;
     }
 
-    public UserCrmPipelineChangeOpportunityInfoPage changeOppurtunityInfoPage() {
-        if (changeOppurtunityInfoPage == null) {
-            changeOppurtunityInfoPage= new UserCrmPipelineChangeOpportunityInfoPage();
+    public CRMUserPipelineChangeOpportunityInfoPage changeOpportunityInfoPage() {
+        if (changeOpportunityInfoPage == null) {
+            changeOpportunityInfoPage= new CRMUserPipelineChangeOpportunityInfoPage();
         }
-        return changeOppurtunityInfoPage;
+        return changeOpportunityInfoPage;
+    }
+
+    public CRMUserPipelineQualifiedPage qualifiedPage(){
+        if (qualifiedPage == null) {
+            qualifiedPage = new CRMUserPipelineQualifiedPage();
+        }
+        return qualifiedPage;
     }
 
     public ReportPage reportPage() {
@@ -58,12 +67,7 @@ public class PageFactory {
         return reportPage;
 
     }
-    public CRMUserCustomersPage getCrmUserCustomersPage() {
-        if (crmUserCustomersPage == null) {
-            crmUserCustomersPage = new CRMUserCustomersPage();
-        }
-        return crmUserCustomersPage;
-    }
+
 
     public CustomersPage getCustomersPage() {
         if (customersPage == null) {
@@ -71,5 +75,15 @@ public class PageFactory {
         }
         return customersPage;
     }
+
+        public CRMUserCustomersPage getCrmUserCustomersPage(){
+            if (crmUserCustomersPage  == null) {
+                crmUserCustomersPage = new CRMUserCustomersPage();
+            }
+            return crmUserCustomersPage;
+
+        }
+
+
 
 }
