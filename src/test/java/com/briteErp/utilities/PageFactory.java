@@ -5,14 +5,15 @@ import com.briteErp.pages.*;
 public class PageFactory {
 
     private LoginPage loginPage;
-    private PipelinePage pipelinePage;
+    private ManagerPipelinePage pipelinePage;
+    private ManagerQuotationsPage quotationsPage;
     private UserCrmPipelinePage userCrmPipelinePage;
-
     private CRMUserCustomersPage crmUserCustomersPage;
-
     private UserCrmPipelineChangeOpportunityInfoPage changeOppurtunityInfoPage;
     private ReportPage reportPage;
     private CustomersPage customersPage;
+
+
 
     public LoginPage login() {
         if (loginPage == null) {
@@ -21,12 +22,20 @@ public class PageFactory {
         return loginPage;
     }
 
-    public PipelinePage getPipelinePage() {
+    public ManagerPipelinePage getPipelinePage() {
         if (pipelinePage == null) {
-            pipelinePage = new PipelinePage();
+            pipelinePage = new ManagerPipelinePage();
         }
         return pipelinePage;
     }
+
+    public ManagerQuotationsPage getQuotationsPage() {
+        if (quotationsPage == null) {
+            quotationsPage = new ManagerQuotationsPage();
+        }
+        return quotationsPage;
+    }
+
 
     public UserCrmPipelinePage userCrmPipelinePage() {
         if (userCrmPipelinePage == null) {
