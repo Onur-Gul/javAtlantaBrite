@@ -18,7 +18,7 @@ public class CRMManagerReportTest extends TestBase {
     extentLogger.info("Verifing to open Report/Pipeline page is ready for usage");
     pages.reportPage().ReportPipeline.click();
     extentLogger.info("Verifying the ReportPipeline page is ready for usage");
-    softAssert.assertEquals(pages.reportPage().getreportpipelineTitle(), ApplicationConstants.REPORTINGACTIVITIES_TITLE);
+    softAssert.assertEquals(pages.reportPage().getreportpipelineTitle(), ApplicationConstants.REPORTINGPIPELINE_TITLE);
 
 
     }
