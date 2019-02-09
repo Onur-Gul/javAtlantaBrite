@@ -191,6 +191,24 @@ public class CRMUserPipelineCreateAndImportTests extends TestBase {
         softAssert.assertTrue(pages.qualifiedPage().wonOrLostStatus.isDisplayed());
     }
 
+    @Test (description = "http://jira.cybertekschool.com/browse/BRIT-3262")
+    public void moduleOptions(){
+
+        extentLogger = report.createTest("Module Options Tests");
+
+        extentLogger.info("3.1.1 Open URL.");
+        pages.login().BriteErpDemo.click();
+
+        extentLogger.info("3.1.2 Login to the website.");
+        pages.login().signIn.click();
+        pages.login().email.sendKeys(ConfigurationReader.getProperty("CRMUserEmail"));
+        pages.login().password.sendKeys(ConfigurationReader.getProperty("CRMUserPassword"));
+        pages.login().loginButton.click();
+
+        extentLogger.info("3.1.3 Verify the module tabs contains CRM module.");
+        softAssert.assertEquals(pages.login().CRMButton.getText(), "CRM");
+    }
+
 
 }
 
