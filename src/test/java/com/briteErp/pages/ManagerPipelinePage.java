@@ -26,8 +26,11 @@ public class ManagerPipelinePage {
     @FindBy(xpath = "//span[@class='o_kanban_title']")
     public WebElement addNewColumn;
 
-    @FindBy(xpath = "//input[@class='form-control o_input']")
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div[2]/div/div/div/div[5]/div[2]/div/input")
     public WebElement columnTitleEntryBox;
+
+    @FindBy(xpath = "//button[@class ='btn btn-primary o_kanban_add']")
+    public WebElement columnNameAddButton;
 
     @FindBy(xpath = "//div[@data-id='7']/div/div/span")
     public WebElement newColumnTitle;
@@ -37,6 +40,16 @@ public class ManagerPipelinePage {
 
     @FindBy(xpath = "//button[@class='btn btn-sm btn-default o_import_cancel']")
     public WebElement importCancelButton;
+
+    @FindBy(xpath = "//div[@data-id='1']/div[2]")
+    public WebElement createdOpportunityBox;
+
+    @FindBy(xpath = "//div[@data-id='2']")
+    public WebElement target;
+
+
+
+
 
 
 

@@ -11,7 +11,27 @@ import static org.testng.Assert.assertEquals;
 
 public class ManagerPipelineTest extends TestBase {
 
-//    @Test
+    @Test(priority = 1)
+    public void managerNavigateToCRMModule() {
+
+        extentLogger = report.createTest("CRM Manager should be able to " +
+                "navigate to CRM module(BRIT-1387)");
+
+        extentLogger.info("Verifying to open main page");
+        pages.login().open();
+
+        extentLogger.info("Verifying to select BriteErpDemo");
+        pages.login().selectBriteErpDemo();
+
+        extentLogger.info("Verifying to login Manager account");
+        pages.login().login(ConfigurationReader.getProperty("CRMManagerEmail"),
+                ConfigurationReader.getProperty("CRMManagerPassword"));
+
+        extentLogger.info("Verifing to open CRM module page is ready for usage");
+        pages.login().clickCRModule();
+    }
+
+    @Test (priority = 2)
     public void managerCreateAnOpportunity () throws InterruptedException {
 
     extentLogger = report.createTest("CRM Manager should be able to " +
@@ -42,39 +62,41 @@ public class ManagerPipelineTest extends TestBase {
 
     }
 
- //   @Test
-    public void managerCreateASalesProcessColumn() {
+   @Test (priority = 3)
+   public void managerCreateASalesProcessColumn()throws Exception{
 
-        extentLogger = report.createTest("CRM Manager should be able to " +
-                "create an new Column (BRIT-2503)");
-        extentLogger.info("Verifying to open main page");
-        pages.login().open();
+   extentLogger = report.createTest("CRM Manager should be able to " +
+                "create an new Column for the sales process (BRIT-2503)");
+   extentLogger.info("Verifying to open main page");
+   pages.login().open();
 
-        extentLogger.info("Verifying to select BriteErpDemo");
-        pages.login().selectBriteErpDemo();
+   extentLogger.info("Verifying to select BriteErpDemo");
+   pages.login().selectBriteErpDemo();
 
-        extentLogger.info("Verifying to login Manager account");
-        pages.login().login(ConfigurationReader.getProperty("CRMManagerEmail"),
+   extentLogger.info("Verifying to login Manager account");
+   pages.login().login(ConfigurationReader.getProperty("CRMManagerEmail"),
                 ConfigurationReader.getProperty("CRMManagerPassword"));
 
-        extentLogger.info("Verifing to open CRM module page is ready for usage");
-        pages.login().clickCRModule();
+   extentLogger.info("Verifing to open CRM module page is ready for usage");
+   pages.login().clickCRModule();
 
-        extentLogger.info("Verifying the Pipeline func. is clickable");
-        pages.getPipelinePage().pipelineLink.click();
+   extentLogger.info("Verifying the Pipeline func. is clickable");
+   pages.getPipelinePage().pipelineLink.click();
 
-        extentLogger.info("Verifying Add new Column link is working in CRM Manager PipelinePage");
-        pages.getPipelinePage().addNewColumn.click();
+   extentLogger.info("Verifying Add new Column link is working in CRM Manager PipelinePage");
+   pages.getPipelinePage().addNewColumn.click();
 
-        extentLogger.info("Verifying Column Title accepts Entry Value");
-        pages.getPipelinePage().columnTitleEntryBox.sendKeys("Lost Opportunities"+ Keys.ENTER);
+   Thread.sleep(5000);
+   extentLogger.info("Verifying Column Title accepts Entry Value");
+   pages.getPipelinePage().columnTitleEntryBox.sendKeys("Lost Opportunities");
+   pages.getPipelinePage().columnNameAddButton.click();
 
-        extentLogger.info("Verifying Column created with correct Header in PipeLine Home page");
-        softAssert.assertEquals(pages.getPipelinePage().columnTitleEntryBox.getText(), "Lost Opportunities");
+   extentLogger.info("Verifying Column created with correct Header in PipeLine Home page");
+   softAssert.assertEquals(pages.getPipelinePage().columnTitleEntryBox.getText(), "Lost Opportunities");
 
-    }
+   }
 
-    @Test
+    @Test (priority = 4)
     public void importAnFileTest(){
 
     extentLogger = report.createTest("CRM Manager should be able to " +
@@ -98,10 +120,31 @@ public class ManagerPipelineTest extends TestBase {
 
     extentLogger.info("Verifing to click Load_File button");
     pages.getPipelinePage().importCancelButton.click();
-
-
     }
 
+    @Test (priority = 5)
+    public void dragAnOpportunityTest() {
+
+        extentLogger = report.createTest("CRM Manager should be able to " +
+                "drag the opportunity into the any column or any line at the pipeline page (BRIT-1414)");
+
+        extentLogger.info("Verifying to open main page");
+        pages.login().open();
+
+        extentLogger.info("Verifying to select BriteErpDemo");
+        pages.login().selectBriteErpDemo();
+
+        extentLogger.info("Verifying to login Manager account");
+        pages.login().login(ConfigurationReader.getProperty("CRMManagerEmail"),
+                ConfigurationReader.getProperty("CRMManagerPassword"));
+
+        extentLogger.info("Verifing to open CRM module page is ready for usage");
+        pages.login().clickCRModule();
+
+        extentLogger.info("Verifing to opportunity boxes are draggable");
+
+        actions.dragAndDrop(pages.getPipelinePage().createdOpportunityBox, pages.getPipelinePage().target).perform();
+    }
 
 
 
