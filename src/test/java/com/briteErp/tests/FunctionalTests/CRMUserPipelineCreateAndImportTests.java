@@ -4,7 +4,10 @@ import com.briteErp.utilities.ConfigurationReader;
 import com.briteErp.utilities.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class CRMUserPipelineCreateAndImportTests extends TestBase {
 
@@ -206,7 +209,7 @@ public class CRMUserPipelineCreateAndImportTests extends TestBase {
         pages.login().loginButton.click();
 
         extentLogger.info("3.1.3 Verify the module tabs contains CRM module.");
-        softAssert.assertEquals(pages.login().CRMButton.getText(), "CRM");
+        softAssert.assertTrue(pages.CRMUserPipelinePage().getListOfHeaders().contains("CRM"));
     }
 
 

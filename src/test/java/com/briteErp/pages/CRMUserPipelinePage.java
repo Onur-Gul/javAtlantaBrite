@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class CRMUserPipelinePage {
 
     public CRMUserPipelinePage() {
@@ -49,6 +51,14 @@ public class CRMUserPipelinePage {
     public WebElement searchBoxFirstItem;
 
 
+    public List<WebElement> getListOfHeaders(){
+        List<WebElement> headers = Driver.getDriver().findElements(
+                By.xpath("//ul[@class='nav navbar-nav navbar-left oe_application_menu_placeholder']//li//a//span"));
+        for (WebElement header:headers) {
+            System.out.println(header.getText());
+        }
+        return headers;
+    }
 
 
 }
