@@ -91,11 +91,10 @@ public class CRMManagerCustomersTest extends TestBase {
     }
 
 
-    //YENILER
 
-    @Test   //Test gecmedi. Sayfa yavas oldugu icin olabilir. Tekrar dene
+    @Test
     public void BRIT_3167() {
-        extentLogger = report.createTest("CRM Manager should be able to see current customer cards on the Customers page)");
+        extentLogger = report.createTest("Verify that Individual radio button is selected as default, and Company radio button is selectable on the Customers/New page");
         getCRMModule();
         pages.getCustomersPage().Customers.click();
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(),30);
@@ -104,86 +103,66 @@ public class CRMManagerCustomersTest extends TestBase {
         Assert.assertTrue( pages.getCustomersPage().radioButtonIndividual.isSelected()
                           && !pages.getCustomersPage().radioButtonCompany.isSelected() );
         pages.getCustomersPage().radioButtonCompany.click();
+        wait.until(ExpectedConditions.invisibilityOf(pages.getCustomersPage().companyDropdown));
         Assert.assertTrue( !pages.getCustomersPage().radioButtonIndividual.isSelected()
                             && pages.getCustomersPage().radioButtonCompany.isSelected() );
     }
 
 
-    @Test   //Test gecti. Ancak Olusturdugum listin locatorunu pagese tasiyinca olmuyor. Tekrar dene
+    @Test
     public void BRIT_3170() {
-        extentLogger = report.createTest("CRM Manager should be able to see current customer cards on the Customers page)");
+        extentLogger = report.createTest("Verify that 80 customers in total displayed on the Customers screen");
         getCRMModule();
         pages.getCustomersPage().Customers.click();
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),30);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
         wait.until(ExpectedConditions.titleIs("Customers - Odoo"));
-        List<WebElement> customerCards = Driver.getDriver().findElements(By.xpath("//div[@class='oe_kanban_global_click o_res_partner_kanban o_kanban_record']/div[2]/strong/span"));
-        List<String> namesList80= new ArrayList<>();
-        for(WebElement a : customerCards){
-        namesList80.add(a.getText());
-        }
-        Assert.assertTrue(namesList80.size() == 80);
+        Assert.assertTrue(pages.getCustomersPage().nameListMakerKanbanView().size() == 80);
     }
 
 
     @Test
-    public void BRIT_3174() {
-        extentLogger = report.createTest("CRM Manager should be able to see current customer cards on the Customers page)");
+    public void BRIT_3174() throws InterruptedException {
+        extentLogger = report.createTest("Verify that the right arrow button brings the next set of 80 customers");
         getCRMModule();
         pages.getCustomersPage().Customers.click();
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),30);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
         wait.until(ExpectedConditions.titleIs("Customers - Odoo"));
         pages.getCustomersPage().rightArrowButton.click();
+        Thread.sleep(5000);
         Assert.assertEquals(pages.getCustomersPage().numberInterval2.getText(), "81-160");
-        List<WebElement> customerCards = Driver.getDriver().findElements(By.xpath("//div[@class='oe_kanban_global_click o_res_partner_kanban o_kanban_record']/div[2]/strong/span"));
+        List<String> customerCards = pages.getCustomersPage().nameListMakerKanbanView();
         Assert.assertTrue(customerCards.size() == 80);
     }
 
 
-    @Test       // gecmedi, site cok agir
+    @Test
     public void BRIT_3178() throws InterruptedException {
-        extentLogger = report.createTest("CRM Manager should be able to see current customer cards on the Customers page)");
+        extentLogger = report.createTest("Verify that the left arrow button brings the previous set of 80 customer cards");
         getCRMModule();
         pages.getCustomersPage().Customers.click();
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(),30);
         wait.until(ExpectedConditions.titleIs("Customers - Odoo"));
 
-        List<WebElement> customerCardsFirst = Driver.getDriver().findElements(By.xpath("//div[@class='oe_kanban_global_click o_res_partner_kanban o_kanban_record']/div[2]/strong/span"));
-        List<String> namesList80First= new ArrayList<>();
-        for(WebElement a : customerCardsFirst){
-            namesList80First.add(a.getText());
-        }
+        List<String> namesList80First= pages.getCustomersPage().nameListMakerKanbanView();
         pages.getCustomersPage().rightArrowButton.click();
             Thread.sleep(5000);
         pages.getCustomersPage().leftArrowButton.click();
-        List<WebElement> customerCardsSecond = Driver.getDriver().findElements(By.xpath("//div[@class='oe_kanban_global_click o_res_partner_kanban o_kanban_record']/div[2]/strong/span"));
-        List<String> namesList80Second= new ArrayList<>();
-        for(WebElement a : customerCardsSecond){
-            namesList80Second.add(a.getText());
-        }
+        List<String> namesList80Second= pages.getCustomersPage().nameListMakerKanbanView();
         Assert.assertNotEquals(namesList80First, namesList80Second);
     }
 
 
-    @Test   //Test gecmedi. Tekrar dene
+    @Test
     public void BRIT_3151() {
-        extentLogger = report.createTest("CRM Manager should be able to see current customer cards on the Customers page)");
+        extentLogger = report.createTest("Verify that the same customers are listed in the same order when user switch to the list view");
         getCRMModule();
         pages.getCustomersPage().Customers.click();
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),30);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
         wait.until(ExpectedConditions.titleIs("Customers - Odoo"));
-
-        List<WebElement> customerCardsK = Driver.getDriver().findElements(By.xpath("//div[@class='oe_kanban_global_click o_res_partner_kanban o_kanban_record']/div[2]/strong/span"));
-        List<String> namesList80Kanban= new ArrayList<>();
-        for(WebElement name : customerCardsK){
-            namesList80Kanban.add(name.getText());
-        }
-            pages.getCustomersPage().listViewButton.click();
-        List<WebElement> customerCardsL = Driver.getDriver().findElements(By.xpath("//td[@class='o_data_cell o_readonly_modifier']"));
-        List<String> namesList80ListView= new ArrayList<>();
-        for(WebElement name : customerCardsL){
-            namesList80ListView.add(name.getText());
-        }
-        Assert.assertEquals(namesList80Kanban, namesList80ListView);
+        List<String> namesList80KanbanView = pages.getCustomersPage().nameListMakerKanbanView();
+        pages.getCustomersPage().listViewButton.click();
+        List<String> namesList80ListView= pages.getCustomersPage().nameListMakerListView();
+        Assert.assertEquals(namesList80KanbanView, namesList80ListView);
     }
 
 }

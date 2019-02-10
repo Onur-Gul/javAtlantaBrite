@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomersPage extends TestBase {
@@ -60,10 +61,10 @@ public class CustomersPage extends TestBase {
     @FindBy(xpath = "//button[@aria-label='list']")
     public WebElement listViewButton;
 
-    @FindBy(id = "radio323_person")
+    @FindBy(xpath = "(//div[@class='o_radio_item']/input)[1]")
     public WebElement radioButtonIndividual;
 
-    @FindBy(id = "radio323_company")
+    @FindBy(xpath = "(//div[@class='o_radio_item']/input)[2]")
     public WebElement radioButtonCompany;
 
     @FindBy(xpath = "//span[@class='btn-group btn-group-sm']/button[2]")
@@ -75,7 +76,26 @@ public class CustomersPage extends TestBase {
     @FindBy(xpath = "//span[@class='o_pager_value']")
     public WebElement numberInterval2;
 
-    public List<WebElement> customerCards = Driver.getDriver().findElements(By.xpath("//div[@class='oe_kanban_global_click o_res_partner_kanban o_kanban_record']/div[2]/strong/span"));
+    @FindBy(xpath = "//input[@placeholder='Company']")
+    public WebElement companyDropdown;
 
-    public List<WebElement> customerCardsListView = Driver.getDriver().findElements(By.xpath("//td[@class='o_data_cell o_readonly_modifier']"));
+
+    public List<String> nameListMakerKanbanView(){
+        List<WebElement> customerCards = Driver.getDriver().findElements(By.xpath("//div[@class='oe_kanban_global_click o_res_partner_kanban o_kanban_record']/div[2]/strong/span"));
+        List<String> namesList80= new ArrayList<>();
+        for(WebElement a : customerCards){
+            namesList80.add(a.getText());
+        }
+        return namesList80;
+    }
+
+    public List<String> nameListMakerListView(){
+        List<WebElement> customerCards = Driver.getDriver().findElements(By.xpath("//td[@class='o_data_cell o_readonly_modifier']"));
+        List<String> namesList80= new ArrayList<>();
+        for(WebElement a : customerCards){
+            namesList80.add(a.getText());
+        }
+        return namesList80;
+    }
+
 }
