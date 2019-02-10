@@ -3,9 +3,13 @@ package com.briteErp.pages;
 import com.briteErp.utilities.ConfigurationReader;
 import com.briteErp.utilities.Driver;
 import com.briteErp.utilities.TestBase;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class CustomersPage extends TestBase {
 
@@ -56,6 +60,22 @@ public class CustomersPage extends TestBase {
     @FindBy(xpath = "//button[@aria-label='list']")
     public WebElement listViewButton;
 
+    @FindBy(id = "radio323_person")
+    public WebElement radioButtonIndividual;
 
+    @FindBy(id = "radio323_company")
+    public WebElement radioButtonCompany;
 
+    @FindBy(xpath = "//span[@class='btn-group btn-group-sm']/button[2]")
+    public WebElement rightArrowButton;
+
+    @FindBy(xpath = "//span[@class='btn-group btn-group-sm']/button")
+    public WebElement leftArrowButton;
+
+    @FindBy(xpath = "//span[@class='o_pager_value']")
+    public WebElement numberInterval2;
+
+    public List<WebElement> customerCards = Driver.getDriver().findElements(By.xpath("//div[@class='oe_kanban_global_click o_res_partner_kanban o_kanban_record']/div[2]/strong/span"));
+
+    public List<WebElement> customerCardsListView = Driver.getDriver().findElements(By.xpath("//td[@class='o_data_cell o_readonly_modifier']"));
 }

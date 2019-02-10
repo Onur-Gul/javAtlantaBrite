@@ -34,8 +34,8 @@ public class TestBase {
     public void setupMethod() {
         driver = Driver.getDriver();
         pages = new PageFactory();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         driver.get(ConfigurationReader.getProperty("url"));
         actions = new Actions(driver);
         softAssert = new SoftAssert();
@@ -142,7 +142,7 @@ public class TestBase {
 
 
 
-    @AfterTest
+    //@AfterTest
     public void tearDownTest() {
         report.flush();
     }
