@@ -17,6 +17,7 @@ public class CRMUserCustomersPage {
     @FindBy (linkText = "Customers")
     public WebElement customersLink;
 
+
     public String getCustomersTitle(){
         String title = Driver.getDriver().findElement(By.xpath("//div[@class='o_control_panel']//ol//li")).getText();
 

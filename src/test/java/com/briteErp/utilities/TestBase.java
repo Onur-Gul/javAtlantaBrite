@@ -39,12 +39,6 @@ public class TestBase {
         driver.get(ConfigurationReader.getProperty("url"));
         actions = new Actions(driver);
         softAssert = new SoftAssert();
-
-
-
-
-
-
     }
 
     @AfterMethod
