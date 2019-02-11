@@ -14,7 +14,7 @@ public class CRMUserCustomersPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy (linkText = "Customers")
+    @FindBy (xpath = "(//span[@class='oe_menu_text'])[19]")
     public WebElement customersLink;
 
     public String getCustomersTitle(){
@@ -23,6 +23,15 @@ public class CRMUserCustomersPage {
         return title;
     }
 
+    @FindBy (xpath = "//div[@class='fa fa-sm fa-remove o_facet_remove']")
+    public  WebElement xbuttononsearchbox;
+
+
+    @FindBy (xpath = "btn btn-primary btn-sm o_form_button_save")
+    public WebElement newCustomerProfile;
+
+    @FindBy (xpath = "o_field_input_328")
+    public WebElement nameField;
 
 
 }
