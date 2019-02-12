@@ -12,7 +12,7 @@ public class CRMManagerReportTest extends TestBase {
     public void BRITE_1624()  {
 //test 2
     extentLogger = report.createTest("CRM Manager should be able view Reporting/Pipeline Analysis page)");
-
+//test 4
     getCRMModule();
     BrowserUtilities.waitForClickability(pages.reportPage().ReportPipeline, 20);
     extentLogger.info("Verifing to open Report/Pipeline page is ready for usage");
