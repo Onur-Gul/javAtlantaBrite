@@ -69,7 +69,7 @@ public class CRMManagerReportTest extends TestBase {
 
     @Test
     public void BRITE_2077()  {
-
+//test
         extentLogger = report.createTest("CRM Manager should be able view Reporting/Pipeline Analysis/Delay to Assign)");
 
         getCRMModule();
