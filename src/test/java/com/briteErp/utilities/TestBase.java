@@ -4,6 +4,7 @@ package com.briteErp.utilities;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.ITestResult;
@@ -22,6 +23,7 @@ public class TestBase {
     protected PageFactory pages;
     protected Actions actions;
     public SoftAssert softAssert;
+    public Faker faker;
 
     protected static ExtentReports report;
     private static ExtentHtmlReporter htmlReporter;
@@ -33,6 +35,7 @@ public class TestBase {
         driver = Driver.getDriver();
         pages = new PageFactory();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.get(ConfigurationReader.getProperty("url"));
         actions = new Actions(driver);
         softAssert = new SoftAssert();
@@ -85,7 +88,7 @@ public class TestBase {
     }
 
     // Method for login to CRM module as user
-    public void positiveLoginTest() {
+    public void loginAsUser() {
 
         //        1.1.1 Open the URL
         pages.login().BriteErpDemo.click();
@@ -98,6 +101,7 @@ public class TestBase {
         pages.login().CRMButton.click();
 
     }
+
     // Method for sending random numbers to required areas
     public String randomQuantity() {
         Random r = new Random();
@@ -106,6 +110,31 @@ public class TestBase {
 
         return rndmQuantity;
     }
+
+
+
+    //Method for login to CRM module as a Manager
+
+    public void getCRMModule(){
+
+    extentLogger.info("Verifying to open main page");
+    pages.login().open();
+
+    extentLogger.info("Verifying to select BriteErpDemo");
+    pages.login().selectBriteErpDemo();
+
+    extentLogger.info("Verifying to login Manager account");
+    pages.login().login(ConfigurationReader.getProperty("CRMManagerEmail"),ConfigurationReader.getProperty("CRMManagerPassword"));
+
+    extentLogger.info("Verifing to open CRM module page is ready for usage");
+    pages.login().clickCRModule();
+    }
+
+
+
+
+
+
 
     @AfterTest
     public void tearDownTest() {
