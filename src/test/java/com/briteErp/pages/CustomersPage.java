@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,10 +45,10 @@ public class CustomersPage extends TestBase {
     @FindBy(xpath = "//div[@class='o_form_buttons_edit']/button[2]")
     public WebElement discardButton;
 
-    @FindBy(xpath = "(//strong[@class='o_kanban_record_title oe_partner_heading']/span)[1]")
+    @FindBy(xpath = "//li[@modifiers='{}']/span")
     public WebElement customerNameOnCart;
 
-    @FindBy(xpath = "//span[@class='o_field_char o_field_widget o_required_modifier']")
+    @FindBy(xpath = "(//li[@class='active'])[2]")
     public WebElement customerNameOnAccount;
 
     @FindBy(className = "modal-body")
@@ -81,7 +83,7 @@ public class CustomersPage extends TestBase {
 
 
     public List<String> nameListMakerKanbanView(){
-        List<WebElement> customerCards = Driver.getDriver().findElements(By.xpath("//div[@class='oe_kanban_global_click o_res_partner_kanban o_kanban_record']/div[2]/strong/span"));
+        List<WebElement> customerCards = Driver.getDriver().findElements(By.xpath("//strong[@modifiers='{}']/span"));
         List<String> namesList80= new ArrayList<>();
         for(WebElement a : customerCards){
             namesList80.add(a.getText());
@@ -96,6 +98,13 @@ public class CustomersPage extends TestBase {
             namesList80.add(a.getText());
         }
         return namesList80;
+    }
+
+    public void goToCustomersPage(){
+        extentLogger.info("Navigating to the Customers page");
+        Customers.click();
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+        wait.until(ExpectedConditions.titleIs("Customers - Odoo"));
     }
 
 }
